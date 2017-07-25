@@ -6,20 +6,25 @@
  * @returns {boolean} true bila kata yang di-swap adalah palindrom
  */
 function palindromeSwapper(str) {
-  let newStr = '';
-  for (var i = 0; i < str.length; i++) {
-    for (var j = 0; j < str.length; i++) {
-      if (i === j) {
-        newStr += str[j+1];
-        newStr += str[j];
-      } else {
-        newStr += str[j];
+  debugger;
+  if(isPalindrome(str) === true){
+    return true
+  } else {
+    for (var i = 0; i < str.length; i++) {
+      let newStr = '';
+      for (var j = 0; j < str.length; j++) {
+        if (i === j) {
+          newStr += str[j+1];
+          newStr += str[j];
+          j++
+        } else {
+          newStr += str[j];
+        }
       }
-      j++;
+      // console.log(newStr +' ********************');
+      return isPalindrome(newStr) ? true : false;
     }
-    if (isPalindrome(newStr)) return true;
   }
-  return false;
 }
 
 /**
@@ -28,10 +33,9 @@ function palindromeSwapper(str) {
  * @param {string} str - input kata yang dicek bila palindrom
  * @returns {boolean} true bila kata adalah palindrom
  */
-function isPalindrome(str) {
-  if (str.split('').reverse().join() === str) return console.log(true);
-  return console.log(false);
-}
+ function isPalindrome(str) {
+   return str.split('').reverse().join('') === str ? true : false
+ }
 
 console.log(palindromeSwapper('arcecar')); // TRUE
 console.log(palindromeSwapper('racecar')); // TRUE
